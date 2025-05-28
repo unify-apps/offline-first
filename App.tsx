@@ -1,9 +1,14 @@
-import "./global.css";
+import './global.css';
 
-import "react-native-gesture-handler";
+import 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import RootStack from "./src/navigation";
+import RootStack from './src/navigation';
 
 export default function App() {
-	return <RootStack />;
+  return (
+    <SafeAreaProvider>
+      <RootStack />
+    </SafeAreaProvider>
+  );
 }
