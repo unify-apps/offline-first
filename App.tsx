@@ -1,9 +1,9 @@
-import './global.css';
+import "./global.css";
 
-import 'react-native-gesture-handler';
+import "react-native-gesture-handler";
 
-import RootStack from './navigation';
+import RootStack from "./src/navigation";
 
 export default function App() {
-  return <RootStack />;
+	return <RootStack />;
 }
