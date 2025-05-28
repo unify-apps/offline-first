@@ -2,6 +2,9 @@ import { withAppBuildGradle, withMainApplication, withSettingsGradle } from '@ex
 import type { ExpoConfig } from '@expo/config-types';
 import withBuildProperties from 'expo-build-properties';
 
+// ref: https://github.com/LovesWorking/watermelondb-expo-plugin-sdk-52-plus
+// ref: https://github.com/morrowdigital/watermelondb-expo-plugin
+
 // 2. In android/settings.gradle, add:
 function settingGradle(gradleConfig: ExpoConfig): ExpoConfig {
   return withSettingsGradle(gradleConfig, (mod) => {

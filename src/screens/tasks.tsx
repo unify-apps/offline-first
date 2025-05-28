@@ -1,27 +1,34 @@
-import { useNavigation } from "@react-navigation/native";
-import type { StackNavigationProp } from "@react-navigation/stack";
-import { ScreenContent } from "~/components/ScreenContent";
+import { useNavigation } from '@react-navigation/native';
+import type { StackNavigationProp } from '@react-navigation/stack';
+import { ScreenContent } from '~/components/ScreenContent';
 
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View } from 'react-native';
 
-import { Button } from "../components/Button";
-import type { RootStackParamList } from "../navigation";
+import { Button } from '../components/Button';
+import type { RootStackParamList } from '../navigation';
+import TaskList from '~/components/TaskList';
+import { useEffect } from 'react';
+import { syncDatabase } from '~/database/sync';
+import { database } from '~/database';
 
-type TasksScreenNavigationProps = StackNavigationProp<
-  RootStackParamList,
-  "Tasks"
->;
+type TasksScreenNavigationProps = StackNavigationProp<RootStackParamList, 'Tasks'>;
 
 export default function Tasks() {
   const navigation = useNavigation<TasksScreenNavigationProps>();
+
+  useEffect(() => {
+    syncDatabase(database);
+  }, []);
+
+  return <TaskList />;
 
   return (
     <View style={styles.container} className="pb-safe">
       <ScreenContent path="screens/overview.tsx" title="Overview" />
       <Button
         onPress={() =>
-          navigation.navigate("Details", {
-            name: "Dan",
+          navigation.navigate('Details', {
+            name: 'Dan',
           })
         }
         title="Show Details"
@@ -31,7 +38,7 @@ export default function Tasks() {
 }
 
 export const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-	},
+  container: {
+    flex: 1,
+  },
 });
